@@ -6,4 +6,4 @@ Via 浏览器主页。
 特色：一键触达各搜索引擎，记录上次搜索引擎。
 
 ## 预览
-![preview](preview.png)
+![preview.png](https://i.loli.net/2018/11/04/5bdf05ebd4b53.png)
