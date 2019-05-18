@@ -13,3 +13,5 @@ Via 浏览器主页。特色：一键触达各搜索引擎，记录上次搜索�
 
 ## 预览
 ![preview.png](https://i.loli.net/2018/11/05/5bdfa9587bdc1.jpg)
+
+
