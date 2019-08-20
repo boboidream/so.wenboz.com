@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>so.wenboz.com</title>
   <link rel="shortcut icon" href="favicon.ico" />
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
 </head>
 <style>
   * {
@@ -261,7 +261,7 @@
         <img class="smaller active" src="img/logo-google.png" id="logo-google"></img>
         <img class="smaller" src="img/logo-baidu.png" id="logo-baidu"></img>
         <img class="smaller" src="img/logo-bing.png" id="logo-bing"></img>
-        <img class="smaller" src="img/logo-sougou.png" id="logo-sougou"></img>
+        <img class="smaller" src="img/logo-dogedoge.png" id="logo-dogedoge"></img>
       </a>
       <br />
       <form onsubmit="return search()" class="search_bar">
@@ -271,7 +271,7 @@
     </div>
     <br />
     <div class="search_type">
-      <div class="box" id="google" data-to="https://g.wenboz.com/search?q=" data-logo="logo-google">
+      <div class="box" id="google" data-to="https://www.google.com/search?q=" data-logo="logo-google">
         <a href="javascript:void(0)"></a>
         <p><img class="icon active" src="img/so-google.png"></p>
         <p class="url">谷歌</p>
@@ -289,10 +289,10 @@
         <p class="url">bing</p>
       </div>
 
-      <div class="box" data-to="https://m.sogou.com/web/searchList.jsp?keyword=" data-logo="logo-sougou">
+      <div class="box" data-to="https://www.dogedoge.com/results?q=" data-logo="logo-dogedoge">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-sougou.png"></p>
-        <p class="url">搜狗</p>
+        <p><img class="icon" src="img/so-dogedoge.png"></p>
+        <p class="url">多吉</p>
       </div>
     </div>
 
@@ -324,14 +324,11 @@
     </div>
 
     <div class="via-func">
-
       <div class="box once" data-to="https://translate.google.com/?q=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-translate.png"></p>
         <p class="url">翻译</p>
       </div>
-
-
       <div class="box once" data-to="https://www.youtube.com/results?search_query=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-youtube.png"></p>
@@ -351,20 +348,6 @@
   </div>
 
   <script type="text/javascript">
-    // 设置透明代理
-    $(function() {
-      var new_proxy = 'zz.xilesou.287865.com'
-      var origin_proxy = 'https://g.wenboz.com/search?q='
-      var origin_pic = 'https://g.wenboz.com/search?q=$$&source=lnms&tbm=isch'
-
-      var websearch = origin_proxy.replace('g.wenboz.com', new_proxy)
-      var picsearch = origin_pic.replace('g.wenboz.com', new_proxy)
-
-      $('#search_input').attr('data-to', websearch)
-      $('#google').attr('data-to', websearch)
-      $('#picsearch').attr('data-to', picsearch)
-    })
-
     function search() {
       var e = document.getElementById("search_input");
       var to = e.dataset.to
