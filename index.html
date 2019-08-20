@@ -146,6 +146,15 @@
     max-width: 72px;
   }
 
+  .copyright {
+      margin-top:2em;
+      color: #ddd;
+  }
+  .copyright a {
+    color: #ddd;
+    text-decoration: none;
+  }
+
   /*
 下方为动画样式，不懂的不要修改
 */
@@ -257,7 +266,7 @@
   <div id="content">
     <br />
     <div class="search_part">
-      <a class="logo" href="folder://">
+      <a class="logo" href="javascript:void(0)">
         <img class="smaller active" src="img/logo-google.png" id="logo-google"></img>
         <img class="smaller" src="img/logo-baidu.png" id="logo-baidu"></img>
         <img class="smaller" src="img/logo-bing.png" id="logo-bing"></img>
@@ -266,7 +275,7 @@
       <br />
       <form onsubmit="return search()" class="search_bar">
         <input type="submit" id="search_submit" value="🐾">
-        <span><input class="search" type="text" value="" autocomplete="off" id="search_input" data-to="https://g.wenboz.com/search?q="></span>
+        <span><input class="search" type="text" value="" autocomplete="off" id="search_input" data-to="https://www.google.com/search?q="></span>
       </form>
     </div>
     <br />
@@ -298,7 +307,7 @@
 
 
     <div class="search-once">
-      <div class="box once" data-to="https://m.douban.com/search/?query=$$">
+      <div class="box once" data-home="https://m.douban.com/home_guide" data-to="https://m.douban.com/search/?query=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-douban.png"></p>
         <p class="url">豆瓣</p>
@@ -310,13 +319,13 @@
         <p class="url">知乎</p>
       </div>
 
-      <div class="box once" data-to="https://s.weibo.com/weibo/$$">
+      <div class="box once" data-home="https://m.weibo.cn" data-to="https://s.weibo.com/weibo/$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-weibo.png"></p>
         <p class="url">微博</p>
       </div>
 
-      <div class="box once" id="picsearch" data-to="https://g.wenboz.com/search?q=$$&source=lnms&tbm=isch">
+      <div class="box once" id="picsearch" data-home="https://www.google.com/imghp" data-to="https://www.google.com/search?q=$$&source=lnms&tbm=isch">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-pic.png"></p>
         <p class="url">搜图</p>
@@ -334,7 +343,7 @@
         <p><img class="icon" src="img/so-youtube.png"></p>
         <p class="url">Youtube</p>
       </div>
-      <div class="box once" data-to="https://s.m.taobao.com/h5?q=$$">
+      <div class="box once" data-home="https://h5.m.taobao.com" data-to="https://s.m.taobao.com/h5?q=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-taobao.png" alt="淘宝"></p>
         <p class="url">淘宝</p>
@@ -345,9 +354,12 @@
         <p class="url">汉典</p>
       </div>
     </div>
+
+    <div class="copyright"><a href="https://www.wenboz.com/">Copyright © bobo</a>  |  <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a></div>
   </div>
 
   <script type="text/javascript">
+  // 点击搜索按钮
     function search() {
       var e = document.getElementById("search_input");
       var to = e.dataset.to
@@ -358,6 +370,7 @@
       return false;
     }
 
+    // 点击第一排搜索引擎
     var $box = $('.search_type .box')
     $box.on('click', function() {
       var $this = $(this)
@@ -380,14 +393,20 @@
       window.location.href = prefix + val
     })
 
-    // 单次搜索
+    // 点击单次搜索 LOGO
     var $once = $('.box.once')
     $once.on('click', function() {
       var $this = $(this)
       var val = $('#search_input').val()
       var prefix = $this.data('to')
-      var url = prefix.replace('$$', val)
+      var url;
 
+      if (val === '') {
+        url = $this.data('home')
+            ? $this.data('home') : prefix.match(/https:\/\/.+?\//)[0]
+      } else {
+        url = prefix.replace('$$', val)
+      }
       window.location.href = url
     })
 
