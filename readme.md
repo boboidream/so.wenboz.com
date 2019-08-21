@@ -1,4 +1,4 @@
-# z-homepage
+# so.wenboz.com
 便捷搜索 浏览器主页。
 
 特色：输入关键词，点击 LOGO 一键触达各搜索引擎，记录上次搜索引擎。
@@ -34,5 +34,5 @@
 
   ---
 
-  感谢 [ZEIT](https://zeit.co) 提供网站托管！
+  ❤️ 感谢 [ZEIT](https://zeit.co) 提供网站托管！
   感谢 [Github](https://github.com) 提供代码托管！
