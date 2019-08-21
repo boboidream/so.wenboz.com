@@ -22,6 +22,7 @@
   ```
   [+] 网页托管于 ZEIT 平台
   [+] 更换汉典 LOGO
+  [+] 点击搜索引擎 LOGO 跳转到 jsproxy
   ```
 * 20190820
   ```
@@ -34,5 +35,7 @@
 
   ---
 
-  ❤️ 感谢 [ZEIT](https://zeit.co) 提供网站托管！
-  感谢 [Github](https://github.com) 提供代码托管！
+   
+❤️ 感谢 [ZEIT](https://zeit.co) 提供网站托管！  
+❤️ 感谢 [Github](https://github.com) 提供代码托管！  
+❤️ 感谢 [jsproxy](https://github.com/EtherDream/jsproxy) ！
