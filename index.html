@@ -489,9 +489,10 @@
 
     // 网址可用性测试实例
     var net = new Net()
-
-    function Net() {
+    var net_p = new Net('__sys__/assets/ico/google.png')
+    function Net(imgurl) {
       this.p = new Ping({
+        favicon: imgurl || 'favicon.ico',
         timeout: 1000
       })
       this.test = function(url) {
@@ -579,7 +580,7 @@
       var promise_arr = []
 
       $.each(url_arr, function(index, url) {
-        var pro = net.test(url + 'https://youtube.com')
+        var pro = net_p.test(url.match(/https:\/\/.+?\//)[0])
 
         promise_arr.push(pro)
       })
