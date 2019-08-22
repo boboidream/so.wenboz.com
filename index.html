@@ -489,21 +489,21 @@
 
     // 网址可用性测试实例
     var net = new Net()
-    var net_p = new Net('__sys__/assets/ico/google.png')
-    function Net(imgurl) {
+    function Net() {
+        var timelimit = 1000
       this.p = new Ping({
-        favicon: imgurl || 'favicon.ico',
-        timeout: 1000
+        timeout: timelimit
       })
       this.test = function(url) {
         var p = this.p
         var pro = new Promise(function(resolve, reject) {
-          p.ping(url, function(err, data) {
-            if (err) {
-              reject(err)
-            } else {
-              resolve(url)
-            }
+          p.ping(url, function(err, ping) {
+              console.log('时间：'+ping)
+              if (ping < timelimit) {
+                resolve(url)
+              } else {
+                  reject('Timeout:' + url)
+              }
           })
         })
 
@@ -518,15 +518,26 @@
       this.$dom = $('#monkey')
       this.open = function() {
         this.$dom.removeClass('hide').addClass('show')
+        localStorage.setItem('mk', 1)
       }
       this.close = function() {
         this.$dom.removeClass('show').addClass('hide')
+        localStorage.setItem('mk', 0)
       }
       this.color = function() {
         this.$dom.removeClass('gray')
       }
       this.gray = function() {
         this.$dom.addClass('gray')
+      }
+      this.init = function() {
+        var mk = localStorage.getItem('mk')
+
+        if (parseInt(mk)) {
+            this.open()
+        } else {
+            this.close()
+        }
       }
     }
 
@@ -580,7 +591,7 @@
       var promise_arr = []
 
       $.each(url_arr, function(index, url) {
-        var pro = net_p.test(url.match(/https:\/\/.+?\//)[0])
+        var pro = net.test(url)
 
         promise_arr.push(pro)
       })
@@ -606,9 +617,12 @@
     }
 
 
-    // 加载模式
+    // 初始化
     $(function() {
       var su = localStorage.getItem('SU')
+
+
+      monkey.init()
 
       if (su === 'true') {
         openSU()
