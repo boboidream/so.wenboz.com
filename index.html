@@ -478,25 +478,26 @@
     // 隐秘模式
     var setProxy = function(prefix) {
       prefix = prefix || ''
-      var p_google = prefix + $('#google').data('to')
-      var p_pic = prefix + $('#picsearch').data('to')
-      var p_pic_h = prefix + $('#picsearch').data('home')
-      var p_youtube = prefix + $('#youtube').data('to')
-      var p_youtube_h = prefix + $('#youtube').data('home')
-      var p_var = [p_google, p_pic, p_pic_h, p_youtube, p_youtube_h]
+      var p = {}
+      p.google = prefix + $('#google').data('to')
+      p.pic = prefix + $('#picsearch').data('to')
+      p.pic_h = prefix + $('#picsearch').data('home')
+      p.youtube = prefix + $('#youtube').data('to')
+      p.youtube_h = prefix + $('#youtube').data('home')
 
       if (!prefix) {
-        $.each(p_var, function(index, item) {
-          item = item.replace(/https:.+?https/, 'https')
+        $.each(p, function(key, val) {
+          p[key] = val.replace(/https:.+?https/, 'https')
         })
       }
+      console.log(p)
 
-      $('#search_input').attr('data-to', p_google)
-      $('#google').attr('data-to', p_google)
-      $('#picsearch').attr('data-to', p_pic)
-      $('#picsearch').attr('data-home', p_pic_h)
-      $('#youtube').attr('data-to', p_youtube)
-      $('#youtube').attr('data-home', p_youtube_h)
+      $('#search_input').attr('data-to', p.google)
+      $('#google').attr('data-to', p.google)
+      $('#picsearch').attr('data-to', p.pic)
+      $('#picsearch').attr('data-home', p.pic_h)
+      $('#youtube').attr('data-to', p.youtube)
+      $('#youtube').attr('data-home', p.youtube_h)
     }
 
     var setMode = function() {
