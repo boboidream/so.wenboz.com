@@ -150,7 +150,6 @@
 
   .copyright {
     margin-top: 2em;
-    padding-left: 0.8em;
     color: #ddd;
   }
 
@@ -159,21 +158,31 @@
     text-decoration: none;
   }
 
-  .copyright #plane {
-    font-size: 1.2em;
-    vertical-align: middle;
+  .copyright #monkey {
     margin-left: 0.2em;
+    vertical-align: middle;
     transition: visibility 0s linear 300ms, opacity 300ms;
   }
 
-  .copyright #plane.hide {
-    visibility: hidden;
-    opacity: 0;
+  .copyright #monkey.hide::before {
+    font-size: 1.3em;
+    content: '🙈';
   }
 
-  .copyright #plane.show {
-    visibility: visible;
-    opacity: 1;
+  .copyright #monkey.show::before {
+    font-size: 1.3em;
+    content: '🙉';
+  }
+
+  .gray {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+
+    filter: grayscale(100%);
+
+    filter: gray;
   }
 
 
@@ -405,7 +414,7 @@
       </div>
     </div>
 
-    <div class="copyright"><a href="javascript:void(0)" id="btn-mode">Copyright</a><a href="https://www.wenboz.com/"> © bobo</a> | <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a> <a id="plane" class="hide">🚀</a></div>
+    <div class="copyright"><a href="javascript:void(0)" id="btn-mode">Copyright</a><a href="https://www.wenboz.com/"> © bobo</a> | <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a> <a id="monkey" class="hide gray"></a></div>
   </div>
 
   <script type="text/javascript">
@@ -476,6 +485,52 @@
     })
 
     // 隐秘模式
+    var proxy_url = ['https://g.wenboz.com:8443/-----', 'https://gamedun.github.io/-----', 'https://zjcqoo.github.io/-----']
+
+    // 网址可用性测试实例
+    var net = new Net()
+
+    function Net() {
+      this.p = new Ping({
+        timeout: 1000
+      })
+      this.test = function(url) {
+        var p = this.p
+        var pro = new Promise(function(resolve, reject) {
+          p.ping(url, function(err, data) {
+            if (err) {
+              reject(err)
+            } else {
+              resolve(url)
+            }
+          })
+        })
+
+        return pro
+      }
+    }
+
+    // 🐵状态实例
+    var monkey = new Monkey()
+
+    function Monkey() {
+      this.$dom = $('#monkey')
+      this.open = function() {
+        this.$dom.removeClass('hide').addClass('show')
+      }
+      this.close = function() {
+        this.$dom.removeClass('show').addClass('hide')
+      }
+      this.color = function() {
+        this.$dom.removeClass('gray')
+      }
+      this.gray = function() {
+        this.$dom.addClass('gray')
+      }
+    }
+
+
+
     var setProxy = function(prefix) {
       prefix = prefix || ''
       var p = {}
@@ -490,7 +545,6 @@
           p[key] = val.replace(/https:.+?https/, 'https')
         })
       }
-      console.log(p)
 
       $('#search_input').attr('data-to', p.google)
       $('#google').attr('data-to', p.google)
@@ -501,52 +555,98 @@
     }
 
     var setMode = function() {
-      var p = new Ping({
-        timeout: 1000
-      })
-      p.ping("https://youtube.com", function(err, data) {
-        // Also display error if err is returned.
-        if (err) {
-          console.log("Use proxy mode.")
-          var prefix = 'https://g.wenboz.com:8443/-----'
+      net.test("https://youtube.com").then(function() {
+        console.log("Use direct mode.")
+        setProxy()
+        monkey.open()
+      }).catch(function(err) {
+        console.log("Use proxy mode.")
+        var promise_arr = liveProxy(proxy_url)
+
+        oneSuccess(promise_arr).then(function(prefix) {
           setProxy(prefix)
-        } else {
-          console.log("Use direct mode.")
-          setProxy()
-        }
-      });
+          monkey.open()
+        }).catch(function(e) {
+          monkey.close()
+          throw new Error(e)
+        })
+      })
     }
 
+
+    // url_arr 生成 promise_arr
+    var liveProxy = function(url_arr) {
+      var promise_arr = []
+
+      $.each(url_arr, function(index, url) {
+        var pro = net.test(url + 'https://youtube.com')
+
+        promise_arr.push(pro)
+      })
+
+      return promise_arr
+    }
+
+    function oneSuccess(promises) {
+      return Promise.all(promises.map(p => {
+        // If a request fails, count that as a resolution so it will keep
+        // waiting for other possible successes. If a request succeeds,
+        // treat it as a rejection so Promise.all immediately bails out.
+        return p.then(
+          val => Promise.reject(val),
+          err => Promise.resolve(err)
+        );
+      })).then(
+        // If '.all' resolved, we've just got an array of errors.
+        errors => Promise.reject(errors),
+        // If '.all' rejected, we've got the result we wanted.
+        val => Promise.resolve(val)
+      );
+    }
+
+
+    // 加载模式
     $(function() {
       var su = localStorage.getItem('SU')
 
-      if (su === 'true') openSU()
+      if (su === 'true') {
+        openSU()
+      } else {
+        nosu_test()
+      }
+
+      document.addEventListener("visibilitychange", handleVisibilityChange, false);
     })
 
-
-
+    function nosu_test() {
+      net.test('https://youtube.com').then(function() {
+        monkey.open()
+      }).catch(function(err) {
+        monkey.close()
+        throw new Error(err)
+      })
+    }
 
     $('#btn-mode').on('click', function() {
-      if ($('#plane').attr('class') === 'show') {
-        offSU()
-        notice('正常模式，成功着陆!')
-      } else {
+      if ($('#monkey').hasClass('gray')) {
         openSU()
-        notice('隐秘模式，低调使用!')
+        notice('智能模式，低调使用!')
+      } else {
+        offSU()
+        notice('普通模式，自力更生!')
       }
     })
 
+
     var openSU = function() {
-      $('#plane').attr('class', 'show')
+      monkey.color()
       localStorage.setItem('SU', 'true')
       setMode()
-      document.addEventListener("visibilitychange", handleVisibilityChange, false);
     }
 
     var offSU = function() {
-      $('#plane').attr('class', 'hide')
+      monkey.gray()
       localStorage.setItem('SU', 'false')
-      document.removeEventListener("visibilitychange", handleVisibilityChange, false);
     }
 
     var notice = function(text) {
@@ -566,10 +666,14 @@
 
     var handleVisibilityChange = function() {
       if (document.hidden) {
-        console.log('后台')
+        console.log('Background')
       } else {
-        console.log('前台')
-        setMode()
+        console.log('Front')
+        if ($('#monkey').hasClass('gray')) {
+          nosu_test()
+        } else {
+          setMode()
+        }
       }
     }
 
