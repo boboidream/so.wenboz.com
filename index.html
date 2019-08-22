@@ -8,6 +8,7 @@
   <title>so.wenboz.com</title>
   <link rel="shortcut icon" href="favicon.ico" />
   <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
 </head>
 <style>
   * {
@@ -24,8 +25,8 @@
     width: 198px;
     height: 65px;
     max-width: 250px;
-    animation: flipInX 4s;
-    -webkit-animation: flipInX 4s
+    animation: flipInX 2s;
+    -webkit-animation: flipInX 2s
   }
 
   .logo {
@@ -147,12 +148,44 @@
   }
 
   .copyright {
-      margin-top:2em;
-      color: #ddd;
+    margin-top: 2em;
+    padding-left: 0.5em;
+    color: #ddd;
   }
+
   .copyright a {
     color: #ddd;
     text-decoration: none;
+  }
+
+  .copyright #plane {
+    font-size: 1.4em;
+    vertical-align: middle;
+    margin-left: 0.2em;
+    transition: visibility 0s linear 300ms, opacity 300ms;
+  }
+  .copyright #plane.hide {
+      visibility: hidden;
+      opacity: 0;
+  }
+  .copyright #plane.show {
+      visibility: visible;
+      opacity: 1;
+  }
+
+
+  #notice {
+    position: fixed;
+    bottom: 10%;
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5em 0em;
+    border-radius: .25rem;
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    animation: inOut 4s;
+    -webkit-animation: inOut 4s
   }
 
   /*
@@ -260,13 +293,27 @@
       transform: translateY(0)
     }
   }
+
+  @keyframes inOut {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
 </style>
 
 <body>
   <div id="content">
     <br />
     <div class="search_part">
-      <a class="logo" href="https://zjcqoo.github.io" target="_blank">
+      <a class="logo" href="https://gamedun.github.io/" target="_blank">
         <img class="smaller active" src="img/logo-google.png" id="logo-google"></img>
         <img class="smaller" src="img/logo-baidu.png" id="logo-baidu"></img>
         <img class="smaller" src="img/logo-bing.png" id="logo-bing"></img>
@@ -333,12 +380,12 @@
     </div>
 
     <div class="via-func">
-      <div class="box once" data-to="https://translate.google.com/?q=$$">
+      <div class="box once" data-to="https://translate.google.cn/?q=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-translate.png"></p>
         <p class="url">翻译</p>
       </div>
-      <div class="box once" data-to="https://www.youtube.com/results?search_query=$$">
+      <div class="box once" id="youtube" data-home="https://www.youtube.com/" data-to="https://www.youtube.com/results?search_query=$$">
         <a href="javascript:void(0)"></a>
         <p><img class="icon" src="img/so-youtube.png"></p>
         <p class="url">Youtube</p>
@@ -355,11 +402,11 @@
       </div>
     </div>
 
-    <div class="copyright"><a href="https://www.wenboz.com/">Copyright © bobo</a>  |  <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a></div>
+    <div class="copyright"><a id="btn-mode">Copyright</a><a href="https://www.wenboz.com/"> © bobo</a> | <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a> <a id="plane" class="hide">✈</a></div>
   </div>
 
   <script type="text/javascript">
-  // 点击搜索按钮
+    // 点击搜索按钮
     function search() {
       var e = document.getElementById("search_input");
       var to = e.dataset.to
@@ -402,8 +449,8 @@
       var url;
 
       if (val === '') {
-        url = $this.data('home')
-            ? $this.data('home') : prefix.match(/https:\/\/.+?\//)[0]
+        url = $this.data('home') ?
+          $this.data('home') : prefix.match(/https:\/\/.+?\//)[0]
       } else {
         url = prefix.replace('$$', val)
       }
@@ -424,6 +471,89 @@
         $('#search_input').attr('data-to', prefix)
       }
     })
+
+    // 隐秘模式
+    var setProxy = function(prefix) {
+      prefix = prefix || ''
+      var p_google = prefix + $('#google').data('to')
+      var p_pic = prefix + $('#picsearch').data('to')
+      var p_pic_h = prefix + $('#picsearch').data('home')
+      var p_youtube = prefix + $('#youtube').data('to')
+      var p_youtube_h = prefix + $('#youtube').data('home')
+      var p_var = [p_google, p_pic, p_pic_h, p_youtube, p_youtube_h]
+
+      if (!prefix) {
+        $.each(p_var, function(index, item) {
+          item = item.replace(/https:.+?https/, 'https')
+        })
+      }
+
+      $('#search_input').attr('data-to', p_google)
+      $('#google').attr('data-to', p_google)
+      $('#picsearch').attr('data-to', p_pic)
+      $('#picsearch').attr('data-home', p_pic_h)
+      $('#youtube').attr('data-to', p_youtube)
+      $('#youtube').attr('data-home', p_youtube_h)
+    }
+
+    var setMode = function() {
+      var p = new Ping({
+        timeout: 1000
+      })
+      p.ping("https://youtube.com", function(err, data) {
+        // Also display error if err is returned.
+        if (err) {
+          console.log("Use proxy mode.")
+          var prefix = 'https://g.wenboz.com:8443/-----'
+          setProxy(prefix)
+        } else {
+          console.log("Use direct mode.")
+          setProxy()
+        }
+      });
+    }
+
+    $(function() {
+        var su = localStorage.getItem('SU')
+
+        if (su === 'true') openSU()
+    })
+
+    $('#btn-mode').on('click', function() {
+      if ($('#plane').attr('class') === 'show') {
+          offSU()
+          notice('正常模式，成功着陆!')
+      } else {
+          openSU()
+          notice('隐秘模式，低调使用!')
+      }
+    })
+
+    var openSU = function() {
+        $('#plane').attr('class', 'show')
+        localStorage.setItem('SU', 'true')
+        setMode()
+    }
+
+    var offSU = function() {
+        $('#plane').attr('class', 'hide')
+        localStorage.setItem('SU', 'false')
+    }
+
+    var notice = function(text) {
+      var $notice = $('#notice')
+
+      if (!$notice.length) {
+        $notice = $('<div id="notice">' + text + '</div>')
+        $('body').append($notice)
+      } else {
+        $notice.html(text).show()
+      }
+
+      $notice.on('animationend', function() {
+        $notice.hide()
+      })
+    }
   </script>
 
 </body>
