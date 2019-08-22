@@ -164,13 +164,15 @@
     margin-left: 0.2em;
     transition: visibility 0s linear 300ms, opacity 300ms;
   }
+
   .copyright #plane.hide {
-      visibility: hidden;
-      opacity: 0;
+    visibility: hidden;
+    opacity: 0;
   }
+
   .copyright #plane.show {
-      visibility: visible;
-      opacity: 1;
+    visibility: visible;
+    opacity: 1;
   }
 
 
@@ -514,30 +516,35 @@
     }
 
     $(function() {
-        var su = localStorage.getItem('SU')
+      var su = localStorage.getItem('SU')
 
-        if (su === 'true') openSU()
+      if (su === 'true') openSU()
     })
+
+
+
 
     $('#btn-mode').on('click', function() {
       if ($('#plane').attr('class') === 'show') {
-          offSU()
-          notice('正常模式，成功着陆!')
+        offSU()
+        notice('正常模式，成功着陆!')
       } else {
-          openSU()
-          notice('隐秘模式，低调使用!')
+        openSU()
+        notice('隐秘模式，低调使用!')
       }
     })
 
     var openSU = function() {
-        $('#plane').attr('class', 'show')
-        localStorage.setItem('SU', 'true')
-        setMode()
+      $('#plane').attr('class', 'show')
+      localStorage.setItem('SU', 'true')
+      setMode()
+      document.addEventListener("visibilitychange", handleVisibilityChange, false);
     }
 
     var offSU = function() {
-        $('#plane').attr('class', 'hide')
-        localStorage.setItem('SU', 'false')
+      $('#plane').attr('class', 'hide')
+      localStorage.setItem('SU', 'false')
+      document.removeEventListener("visibilitychange", handleVisibilityChange, false);
     }
 
     var notice = function(text) {
@@ -553,6 +560,15 @@
       $notice.on('animationend', function() {
         $notice.hide()
       })
+    }
+
+    var handleVisibilityChange = function() {
+      if (document.hidden) {
+        // console.log('后台')
+      } else {
+        // console.log('前台')
+        setMode()
+      }
     }
   </script>
 
