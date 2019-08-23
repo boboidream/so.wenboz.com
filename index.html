@@ -9,7 +9,6 @@
   <link rel="shortcut icon" href="favicon.ico" />
   <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
-  <script src="https://cdn.bootcss.com/vConsole/3.3.3/vconsole.min.js"></script>
 </head>
 <style>
   * {
@@ -415,7 +414,10 @@
     </div>
 
     <div class="copyright"><a href="javascript:void(0)" id="btn-mode">Copyright</a><a href="https://www.wenboz.com/"> © bobo</a> | <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a> <a id="monkey" class="hide gray"></a></div>
-  </div>
+    <!-- 调试代码 -->
+    <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.3/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole();// init vConsole</script> -->
+</div>
 
   <script type="text/javascript">
     // 点击搜索按钮
@@ -490,7 +492,7 @@
     // 网址可用性测试实例
     var net = new Net()
     function Net() {
-        var timelimit = 1000
+        var timelimit = 1500
       this.p = new Ping({
         timeout: timelimit
       })
@@ -585,7 +587,6 @@
       })
     }
 
-
     // url_arr 生成 promise_arr
     var liveProxy = function(url_arr) {
       var promise_arr = []
@@ -621,7 +622,6 @@
     $(function() {
       var su = localStorage.getItem('SU')
 
-
       monkey.init()
 
       if (su === 'true') {
@@ -651,7 +651,6 @@
         notice('普通模式，自力更生!')
       }
     })
-
 
     var openSU = function() {
       monkey.color()
@@ -692,9 +691,6 @@
         }
       }
     }
-
-    // init vConsole
-    var vConsole = new VConsole();
   </script>
 
 </body>
