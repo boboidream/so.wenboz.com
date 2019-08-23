@@ -195,8 +195,11 @@
     color: #856404;
     background-color: #fff3cd;
     border-color: #ffeeba;
-    animation: inOut 4s;
-    -webkit-animation: inOut 4s
+    animation-fill-mode: forwards;
+  }
+  .inout {
+    animation: inOut 2s;
+    -webkit-animation: inOut 2s
   }
 
   /*
@@ -307,14 +310,17 @@
 
   @keyframes inOut {
     0% {
+        display: block;
       opacity: 0;
     }
 
     50% {
+        display: block;
       opacity: 1;
     }
 
     100% {
+        display: none;
       opacity: 0;
     }
   }
@@ -324,7 +330,7 @@
   <div id="content">
     <br />
     <div class="search_part">
-      <a class="logo" href="https://gamedun.github.io/" target="_blank">
+      <a class="logo" href="https://zjcqoo.github.io" target="_blank">
         <img class="smaller active" src="img/logo-google.png" id="logo-google"></img>
         <img class="smaller" src="img/logo-baidu.png" id="logo-baidu"></img>
         <img class="smaller" src="img/logo-bing.png" id="logo-bing"></img>
@@ -487,7 +493,7 @@
     })
 
     // 隐秘模式
-    var proxy_url = ['https://g.wenboz.com:8443/-----', 'https://gamedun.github.io/-----', 'https://zjcqoo.github.io/-----']
+    var proxy_url = ['https://g.wenboz.com:8443/-----', 'https://zjcqoo.github.io/-----', 'https://gamedun.github.io/-----']
 
     // 网址可用性测试实例
     var net = new Net()
@@ -527,10 +533,10 @@
         localStorage.setItem('mk', 0)
       }
       this.color = function() {
-        this.$dom.removeClass('gray')
+        this.$dom.removeClass('gray').addClass('color')
       }
       this.gray = function() {
-        this.$dom.addClass('gray')
+        this.$dom.removeClass('color').addClass('gray')
       }
       this.init = function() {
         var mk = localStorage.getItem('mk')
@@ -540,6 +546,19 @@
         } else {
             this.close()
         }
+      }
+    }
+
+    // 弹窗
+    var notice = function(text) {
+      var $notice = $('#notice')
+
+      if (!$notice.length) {
+        $notice = $('<div id="notice" class="inout">' + text + '</div>')
+        $('body').append($notice)
+      } else {
+          $notice.html(text).removeClass('inout').show()
+        $notice.addClass('inout')
       }
     }
 
@@ -568,6 +587,7 @@
       $('#youtube').attr('data-home', p.youtube_h)
     }
 
+    // 检测网络，设置 proxy mode
     var setMode = function() {
       net.test("https://youtube.com").then(function() {
         console.log("Use direct mode.")
@@ -575,7 +595,14 @@
         monkey.open()
       }).catch(function(err) {
         console.log("Use proxy mode.")
-        var promise_arr = liveProxy(proxy_url)
+        var promise_arr = []
+        var lock_val = lockNet.getVal()
+
+        if (lock_val) {
+            promise_arr = [net.test(lock_val)]
+        } else {
+            promise_arr = liveProxy(proxy_url)
+        }
 
         oneSuccess(promise_arr).then(function(prefix) {
           setProxy(prefix)
@@ -642,6 +669,7 @@
       })
     }
 
+    // 事件监听
     $('#btn-mode').on('click', function() {
       if ($('#monkey').hasClass('gray')) {
         openSU()
@@ -651,6 +679,67 @@
         notice('普通模式，自力更生!')
       }
     })
+    $(document).on('click', '#monkey.color', function() {
+        lockNet.next(function(index, val) {
+            if (index) {
+                notice('锁定线路：' + index)
+            } else {
+                notice('自动选线')
+            }
+
+            setMode()
+        })
+    })
+    var handleVisibilityChange = function() {
+      if (document.hidden) {
+        console.log('Background')
+      } else {
+        console.log('Front')
+        if ($('#monkey').hasClass('gray')) {
+          nosu_test()
+        } else {
+          setMode()
+        }
+      }
+    }
+
+    // 锁定线路
+    var lockNet = new LockNet(proxy_url)
+
+    function LockNet(arr) {
+        this.next = function(cb) {
+            var num = this.getNum()
+
+            if (!num) {
+                localStorage.setItem('lock', 1)
+                if (cb) cb(1, arr[0])
+                return arr[0]
+            }
+            if (num >= arr.length) {
+                localStorage.setItem('lock', 0)
+                if (cb) cb(0, false)
+                return false
+            }
+
+            localStorage.setItem('lock', ++num)
+
+            if (cb) cb(num, arr[num-1])
+            return arr[num]
+        }
+        this.getNum = function() {
+            return parseInt(localStorage.getItem('lock'))
+        }
+        this.getVal = function() {
+            var num = this.getNum()
+            if (num) {
+                return arr[num - 1]
+            } else {
+                return false
+            }
+        }
+    }
+
+
 
     var openSU = function() {
       monkey.color()
@@ -664,33 +753,9 @@
       nosu_test()
     }
 
-    var notice = function(text) {
-      var $notice = $('#notice')
 
-      if (!$notice.length) {
-        $notice = $('<div id="notice">' + text + '</div>')
-        $('body').append($notice)
-      } else {
-        $notice.html(text).show()
-      }
 
-      $notice.on('animationend', function() {
-        $notice.hide()
-      })
-    }
 
-    var handleVisibilityChange = function() {
-      if (document.hidden) {
-        console.log('Background')
-      } else {
-        console.log('Front')
-        if ($('#monkey').hasClass('gray')) {
-          nosu_test()
-        } else {
-          setMode()
-        }
-      }
-    }
   </script>
 
 </body>
