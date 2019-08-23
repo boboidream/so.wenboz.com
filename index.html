@@ -371,7 +371,6 @@
       </div>
     </div>
 
-
     <div class="search-once">
       <div class="box once" data-home="https://m.douban.com/home_guide" data-to="https://m.douban.com/search/?query=$$">
         <a href="javascript:void(0)"></a>
@@ -646,7 +645,10 @@
         })
       }
 
-      $('#search_input').attr('data-to', p.google)
+      if ($('#logo-google').hasClass('active')) {
+        $('#search_input').attr('data-to', p.google)
+      }
+
       $('#google').attr('data-to', p.google)
       $('#picsearch').attr('data-to', p.pic)
       $('#picsearch').attr('data-home', p.pic_h)
@@ -760,5 +762,4 @@
     }
   </script>
 </body>
-
 </html>
