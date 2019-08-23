@@ -1,23 +1,20 @@
-# so.wenboz.com
-便捷搜索 浏览器主页。
+# Smart Monkey
+「机智猴」浏览器主页。直接线上访问 [so.wenboz.com](http://so.wenboz.com/)
 
 特色：输入关键词，点击 LOGO 一键触达各搜索引擎，记录上次搜索引擎。
 
 ## 预览
 ![preview.png](https://i.loli.net/2018/11/05/5bdfa9587bdc1.jpg)
 
-## 使用方法
-### 方法一
-直接线上访问 [so.wenboz.com](http://so.wenboz.com/)
-
-### 方法二
-下载到本地，作为本地主页
-
-> 下载网站 zip 包，解压后手机端访问 index.html 地址，并复制此时 URL 为首页地址。
->
-> 下载地址：https://github.com/boboidream/so.wenboz.com/releases
-
 ## 更新说明
+* 20190823
+  ```
+  [+] 正式更名 Smart Monkey
+  [+] 智能检测当前是否可以访问外网。可以：🙉；不可以： 🙈
+  [+] 增加「智能模式」无忧上网
+  [+] 增加「锁定线路」功能
+  [-] 不再提供本地下载包
+  ```
 * 20190822
   ```
   [+] 网页托管于 ZEIT 平台
