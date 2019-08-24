@@ -7,6 +7,11 @@
 ![preview.png](https://i.loli.net/2018/11/05/5bdfa9587bdc1.jpg)
 
 ## 更新说明
+* 20190824
+  ```
+  [+] 网站恢复 Github Pages 托管，优化 SSL 加载速度
+  [+] 图片采用 SM.MS 图床
+  ```
 * 20190823
   ```
   [+] 正式更名 Smart Monkey
@@ -32,7 +37,7 @@
 
   ---
 
-   
-❤️ 感谢 [ZEIT](https://zeit.co) 提供网站托管！  
 ❤️ 感谢 [Github](https://github.com) 提供代码托管！  
+❤️ 感谢 [Cloudflare](https://www.cloudflare.com) 提供 CDN 加速！ 
+❤️ 感谢 [SM.MS](https://sm.ms/) 提供图床！
 ❤️ 感谢 [jsproxy](https://github.com/EtherDream/jsproxy) ！

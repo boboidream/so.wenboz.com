@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Smart Monkey</title>
   <link rel="shortcut icon" href="favicon.ico" />
-  <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
 </head>
 <style>
   * {
@@ -333,10 +331,14 @@
     <br />
     <div class="search_part">
       <a class="logo" href="https://zjcqoo.github.io" target="_blank">
-        <img class="smaller active" src="img/logo-google.png" id="logo-google"></img>
-        <img class="smaller" src="img/logo-baidu.png" id="logo-baidu"></img>
-        <img class="smaller" src="img/logo-bing.png" id="logo-bing"></img>
-        <img class="smaller" src="img/logo-dogedoge.png" id="logo-dogedoge"></img>
+        <img class="smaller active" src="https://i.loli.net/2019/08/24/EQHDmT7wd6aNYvp.png" id="logo-google"
+            onerror='this.onerror = null; this.src="img/logo-google.png"'></img>
+        <img class="smaller" src="https://i.loli.net/2019/08/24/heAQfbq5l8xo6kw.png" id="logo-baidu"
+            onerror='this.onerror = null; this.src="img/logo-baidu.png"'></img>
+        <img class="smaller" src="https://i.loli.net/2019/08/24/Rtyl7YpHWUeAJsM.png" id="logo-bing"
+            onerror='this.onerror = null; this.src="img/logo-bing.png"'></img>
+        <img class="smaller" src="https://i.loli.net/2019/08/24/BAWPveghqbCD2JI.png" id="logo-dogedoge"
+            onerror='this.onerror = null; this.src="img/logo-dogedoge.png"'></img>
       </a>
       <br />
       <form onsubmit="return search()" class="search_bar">
@@ -348,25 +350,29 @@
     <div class="search_type">
       <div class="box" id="google" data-to="https://www.google.com/search?q=" data-logo="logo-google">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon active" src="img/so-google.png"></p>
+        <p><img class="icon active" src="https://i.loli.net/2019/08/24/C8bODdyjTmgWaz1.png"
+            onerror='this.onerror = null; this.src="img/so-google.png"'></p>
         <p class="url">谷歌</p>
       </div>
 
       <div class="box" data-to="http://www.baidu.com/s?wd=" data-logo="logo-baidu">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-baidu.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/QFUIrgBxCVDNhWE.png"
+            onerror='this.onerror = null; this.src="img/so-baidu.png"'></p>
         <p class="url">百度</p>
       </div>
 
       <div class="box" data-to="https://cn.bing.com/search?q=" data-logo="logo-bing">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-bing.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/QF3ujxswXf8yKNn.png"
+            onerror='this.onerror = null; this.src="img/so-bing.png"'></p>
         <p class="url">bing</p>
       </div>
 
       <div class="box" data-to="https://www.dogedoge.com/results?q=" data-logo="logo-dogedoge">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-dogedoge.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/poIEV4kb3a9GhSv.png"
+            onerror='this.onerror = null; this.src="img/so-dogedoge.png"'></p>
         <p class="url">多吉</p>
       </div>
     </div>
@@ -374,25 +380,29 @@
     <div class="search-once">
       <div class="box once" data-home="https://m.douban.com/home_guide" data-to="https://m.douban.com/search/?query=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-douban.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/t18pFRk59bV3XTE.png"
+            onerror='this.onerror = null; this.src="img/so-douban.png"'></p>
         <p class="url">豆瓣</p>
       </div>
 
       <div class="box once" data-to="https://www.zhihu.com/search?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-zhihu.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/M3iFxlGsOZRYIpb.png"
+            onerror='this.onerror = null; this.src="img/so-zhihu.png"'></p>
         <p class="url">知乎</p>
       </div>
 
       <div class="box once" data-home="https://m.weibo.cn" data-to="https://s.weibo.com/weibo/$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-weibo.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/YmsoEpbVCvLngdi.png"
+            onerror='this.onerror = null; this.src="img/so-weibo.png"'></p>
         <p class="url">微博</p>
       </div>
 
       <div class="box once" id="picsearch" data-home="https://www.google.com/imghp" data-to="https://www.google.com/search?q=$$&source=lnms&tbm=isch">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-pic.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/ljsgMeLWaTcnQxD.png"
+            onerror='this.onerror = null; this.src="img/so-pic.png"'></p>
         <p class="url">搜图</p>
       </div>
     </div>
@@ -400,32 +410,37 @@
     <div class="via-func">
       <div class="box once" data-to="https://translate.google.cn/?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-translate.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/rU319XA2xltsqev.png"
+            onerror='this.onerror = null; this.src="img/so-translate.png"'></p>
         <p class="url">翻译</p>
       </div>
       <div class="box once" id="youtube" data-home="https://www.youtube.com/" data-to="https://www.youtube.com/results?search_query=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-youtube.png"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/YL1JSyObrBaliAd.png"
+            onerror='this.onerror = null; this.src="img/so-youtube.png"'></p>
         <p class="url">Youtube</p>
       </div>
       <div class="box once" data-home="https://h5.m.taobao.com" data-to="https://s.m.taobao.com/h5?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-taobao.png" alt="淘宝"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/wkLfU3KFdYpZCJ5.png" alt="淘宝"
+            onerror='this.onerror = null; this.src="img/so-taobao.png"'></p>
         <p class="url">淘宝</p>
       </div>
       <div class="box once" data-to="https://www.zdic.net/hans/$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="img/so-handian.png" alt="汉典"></p>
+        <p><img class="icon" src="https://i.loli.net/2019/08/24/IBPqS3nFclbX95e.png" alt="汉典"
+            onerror='this.onerror = null; this.src="img/so-handian.png"'></p>
         <p class="url">汉典</p>
       </div>
     </div>
 
     <div class="copyright"><a href="javascript:void(0)" id="btn-mode">Copyright</a><a href="https://www.wenboz.com/"> © bobo</a> | <a href="https://github.com/boboidream/so.wenboz.com">Star Me</a> <a id="monkey" class="hide gray"></a></div>
-    <!-- 调试代码 -->
-    <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.3/vconsole.min.js"></script>
-    <script>var vConsole = new VConsole();// init vConsole</script> -->
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/alfg/ping.js@0.2.2/dist/ping.min.js" type="text/javascript"></script>
+  <!-- 调试代码 -->
+  <!-- <script src="https://cdn.bootcss.com/vConsole/3.3.3/vconsole.min.js"></script>
+    <script>var vConsole = new VConsole();// init vConsole</script> -->
   <script type="text/javascript">
     // 点击搜索按钮
     function search() {
@@ -762,4 +777,5 @@
     }
   </script>
 </body>
+
 </html>
