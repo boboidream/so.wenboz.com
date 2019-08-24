@@ -310,17 +310,17 @@
 
   @keyframes inOut {
     0% {
-      display: block;
+      visibility: visible;
       opacity: 0;
     }
 
     50% {
-      display: block;
+      visibility: visible;
       opacity: 1;
     }
 
     100% {
-      display: none;
+      visibility: hidden;
       opacity: 0;
     }
   }
@@ -331,14 +331,10 @@
     <br />
     <div class="search_part">
       <a class="logo" href="https://zjcqoo.github.io" target="_blank">
-        <img class="smaller active" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59df.png" id="logo-google"
-            onerror='this.onerror = null; this.src="img/logo-google.png"'></img>
-        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59d3.png" id="logo-baidu"
-            onerror='this.onerror = null; this.src="img/logo-baidu.png"'></img>
-        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59d6.png" id="logo-bing"
-            onerror='this.onerror = null; this.src="img/logo-bing.png"'></img>
-        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59db.png" id="logo-dogedoge"
-            onerror='this.onerror = null; this.src="img/logo-dogedoge.png"'></img>
+        <img class="smaller active" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59df.png" id="logo-google" onerror='this.onerror = null; this.src="img/logo-google.png"'></img>
+        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59d3.png" id="logo-baidu" onerror='this.onerror = null; this.src="img/logo-baidu.png"'></img>
+        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59d6.png" id="logo-bing" onerror='this.onerror = null; this.src="img/logo-bing.png"'></img>
+        <img class="smaller" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59db.png" id="logo-dogedoge" onerror='this.onerror = null; this.src="img/logo-dogedoge.png"'></img>
       </a>
       <br />
       <form onsubmit="return search()" class="search_bar">
@@ -350,29 +346,25 @@
     <div class="search_type">
       <div class="box" id="google" data-to="https://www.google.com/search?q=" data-logo="logo-google">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon active" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c9d.png"
-            onerror='this.onerror = null; this.src="img/so-google.png"'></p>
+        <p><img class="icon active" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c9d.png" onerror='this.onerror = null; this.src="img/so-google.png"'></p>
         <p class="url">谷歌</p>
       </div>
 
       <div class="box" data-to="http://www.baidu.com/s?wd=" data-logo="logo-baidu">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59e4.png"
-            onerror='this.onerror = null; this.src="img/so-baidu.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60aad8451253d1782f59e4.png" onerror='this.onerror = null; this.src="img/so-baidu.png"'></p>
         <p class="url">百度</p>
       </div>
 
       <div class="box" data-to="https://cn.bing.com/search?q=" data-logo="logo-bing">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c90.png"
-            onerror='this.onerror = null; this.src="img/so-bing.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c90.png" onerror='this.onerror = null; this.src="img/so-bing.png"'></p>
         <p class="url">bing</p>
       </div>
 
       <div class="box" data-to="https://www.dogedoge.com/results?q=" data-logo="logo-dogedoge">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c94.png"
-            onerror='this.onerror = null; this.src="img/so-dogedoge.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c94.png" onerror='this.onerror = null; this.src="img/so-dogedoge.png"'></p>
         <p class="url">多吉</p>
       </div>
     </div>
@@ -380,29 +372,25 @@
     <div class="search-once">
       <div class="box once" data-home="https://m.douban.com/home_guide" data-to="https://m.douban.com/search/?query=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c98.png"
-            onerror='this.onerror = null; this.src="img/so-douban.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5c98.png" onerror='this.onerror = null; this.src="img/so-douban.png"'></p>
         <p class="url">豆瓣</p>
       </div>
 
       <div class="box once" data-to="https://www.zhihu.com/search?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab24451253d1782f5f74.png"
-            onerror='this.onerror = null; this.src="img/so-zhihu.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab24451253d1782f5f74.png" onerror='this.onerror = null; this.src="img/so-zhihu.png"'></p>
         <p class="url">知乎</p>
       </div>
 
       <div class="box once" data-home="https://m.weibo.cn" data-to="https://s.weibo.com/weibo/$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e74.png"
-            onerror='this.onerror = null; this.src="img/so-weibo.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e74.png" onerror='this.onerror = null; this.src="img/so-weibo.png"'></p>
         <p class="url">微博</p>
       </div>
 
       <div class="box once" id="picsearch" data-home="https://www.google.com/imghp" data-to="https://www.google.com/search?q=$$&source=lnms&tbm=isch">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e69.png"
-            onerror='this.onerror = null; this.src="img/so-pic.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e69.png" onerror='this.onerror = null; this.src="img/so-pic.png"'></p>
         <p class="url">搜图</p>
       </div>
     </div>
@@ -410,26 +398,22 @@
     <div class="via-func">
       <div class="box once" data-to="https://translate.google.cn/?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e70.png"
-            onerror='this.onerror = null; this.src="img/so-translate.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e70.png" onerror='this.onerror = null; this.src="img/so-translate.png"'></p>
         <p class="url">翻译</p>
       </div>
       <div class="box once" id="youtube" data-home="https://www.youtube.com/" data-to="https://www.youtube.com/results?search_query=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e77.png"
-            onerror='this.onerror = null; this.src="img/so-youtube.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e77.png" onerror='this.onerror = null; this.src="img/so-youtube.png"'></p>
         <p class="url">Youtube</p>
       </div>
       <div class="box once" data-home="https://h5.m.taobao.com" data-to="https://s.m.taobao.com/h5?q=$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e6b.png" alt="淘宝"
-            onerror='this.onerror = null; this.src="img/so-taobao.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab1d451253d1782f5e6b.png" alt="淘宝" onerror='this.onerror = null; this.src="img/so-taobao.png"'></p>
         <p class="url">淘宝</p>
       </div>
       <div class="box once" data-to="https://www.zdic.net/hans/$$">
         <a href="javascript:void(0)"></a>
-        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5ca4.png" alt="汉典"
-            onerror='this.onerror = null; this.src="img/so-handian.png"'></p>
+        <p><img class="icon" src="https://pic.superbed.cn/item/5d60ab01451253d1782f5ca4.png" alt="汉典" onerror='this.onerror = null; this.src="img/so-handian.png"'></p>
         <p class="url">汉典</p>
       </div>
     </div>
