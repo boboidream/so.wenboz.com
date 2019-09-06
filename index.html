@@ -17,7 +17,14 @@
   body {
     text-align: center;
     background-color: #ffffff;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(100, 100, 100, 0.1);
+  }
+  a {
+    -moz-user-select:none; /*火狐*/
+    -webkit-user-select:none; /*webkit浏览器*/
+    -ms-user-select:none; /*IE10*/
+    -khtml-user-select:none; /*早期浏览器*/
+    user-select:none;
   }
 
   /*下面是解决ios上去除微信点击蓝色边框 */
@@ -26,7 +33,7 @@
   p:focus,
   div:focus {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-user-modify: read-write-plaintext-only;
+    -webkit-user-modify: read-only;
     outline: none;
   }
 
@@ -72,7 +79,7 @@
   }
 
   .box .url {
-    opacity: 0;
+    display: none;
   }
 
   span {
@@ -121,6 +128,7 @@
     animation: fadeInDown 1s;
     position: relative;
     display: inline-block;
+    margin-bottom: 30px;
     width: 75px;
     border: 0;
     cursor: pointer;
