@@ -17,6 +17,17 @@
   body {
     text-align: center;
     background-color: #ffffff;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
+  /*下面是解决ios上去除微信点击蓝色边框 */
+  a:focus,
+  input:focus,
+  p:focus,
+  div:focus {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-user-modify: read-write-plaintext-only;
+    outline: none;
   }
 
   img.smaller {
@@ -91,6 +102,7 @@
     height: 40px;
     float: right;
     border: none;
+    border-radius: 0 50px 50px 0;
     opacity: .8;
     background: url('/img/ico_1.png') no-repeat center;
     background-size: 22px 20px;
@@ -163,10 +175,12 @@
     height: 1.4em;
     transition: visibility 0s linear 300ms, opacity 300ms;
   }
+
   .copyright #monkey.hide {
     background: url('/img/ico_2.png') no-repeat center;
     background-size: 1.4em;
   }
+
   .copyright #monkey.show {
     background: url('/img/ico_3.png') no-repeat center;
     background-size: 1.4em;
