@@ -1,3 +1,16 @@
+// autofocus seach input
+function autofocus() {
+  var patten = ["phone", "pad", "pod", "iPhone", "iPod", "ios", "iPad", "Android",
+   "Mobile", "BlackBerry", "IEMobile", "MQQBrowser", "JUC", "Fennec", "wOSBrowser",
+    "BrowserNG", "WebOS", "Symbian", "Windows Phone"
+  ].join('|');
+  var re = new RegExp(patten, 'i');
+
+  if (!re.test(navigator.userAgent)) {
+    $('#search_input').focus()
+  }
+}
+
 // 点击搜索按钮
 function search() {
   var e = document.getElementById("search_input");
@@ -49,8 +62,9 @@ $once.on('click', function() {
   window.location.href = url
 })
 
-// 读取默认搜索
+// init
 $(function() {
+  // 读取默认搜索
   var current = localStorage.getItem('search')
 
   if (current) {
@@ -62,6 +76,8 @@ $(function() {
     $('#' + logo).addClass('active')
     $('#search_input').attr('data-to', prefix)
   }
+
+  autofocus() // focus on input
 })
 
 // 隐秘模式==========================================
@@ -335,6 +351,7 @@ var handleVisibilityChange = function() {
 // sw register
 window.addEventListener("load", function() {
   console.log("Will the service worker register?");
+
   navigator.serviceWorker.register('/sw.js')
   .then(function(reg){
       console.log("Yes, it did.");
