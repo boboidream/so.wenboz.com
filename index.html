@@ -87,14 +87,13 @@
 
   #search_submit {
     outline: 0;
+    width: 40px;
     height: 40px;
     float: right;
-    color: #000;
-    font-size: 16px;
-    font-weight: 700;
     border: none;
-    background-color: transparent;
-    padding: 0 13px 0 13px
+    background: url('/img/ico_1.png') no-repeat center;
+    background-size: 22px 20px;
+    cursor: pointer;
   }
 
   #content {
@@ -156,20 +155,20 @@
   }
 
   .copyright #monkey {
+    display: inline-block;
     margin-left: 0.3em;
+    vertical-align: text-bottom;
+    width: 1.4em;
+    height: 1.4em;
     transition: visibility 0s linear 300ms, opacity 300ms;
   }
-
-  .copyright #monkey.hide::before {
-    font-size: 1.3em;
-    content: '🙈';
-    vertical-align: text-bottom;
+  .copyright #monkey.hide {
+    background: url('/img/ico_2.png') no-repeat center;
+    background-size: 1.4em;
   }
-
-  .copyright #monkey.show::before {
-    font-size: 1.3em;
-    content: '🙉';
-    vertical-align: text-bottom;
+  .copyright #monkey.show {
+    background: url('/img/ico_3.png') no-repeat center;
+    background-size: 1.4em;
   }
 
   .gray {
@@ -338,7 +337,7 @@
       </a>
       <br />
       <form onsubmit="return search()" class="search_bar">
-        <input type="submit" id="search_submit" value="🐾">
+        <input type="submit" id="search_submit" value="">
         <span><input class="search" type="text" value="" autocomplete="off" id="search_input" data-to="https://www.google.com/search?q="></span>
       </form>
     </div>

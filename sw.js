@@ -1,6 +1,6 @@
 // configuration
 const
-  version = '1.0.2',
+  version = '1.0.3',
   CACHE = version + '::PWAsite',
   installFilesEssential = [
     '/',
@@ -11,6 +11,9 @@ const
   ],
   installFilesDesirable = [
     '/favicon.ico',
+    '/img/ico_1.png',
+    '/img/ico_2.png',
+    '/img/ico_3.png',
     '/img/so-zhihu.png',
     '/img/so-youtube.png',
     '/img/so-weibo.png',
