@@ -1,6 +1,6 @@
 // configuration
 const
-  version = '1.0.7',
+  version = '1.0.8',
   CACHE = version + '::PWAsite',
   installFilesEssential = [
     '/',
@@ -106,7 +106,7 @@ self.addEventListener('fetch', event => {
             .then(newreq => {
 
               console.log('network fetch: ' + url);
-              if (newreq.ok && !/youtube\.com/.test(url)) {
+              if (newreq.ok && !/youtube\.com/.test(url) && !/so\.wenboz\.com\/data/.test(url)) {
                 console.log('cache: ' + url)
                 cache.put(event.request, newreq.clone());
               }
