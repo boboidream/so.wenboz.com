@@ -1,6 +1,6 @@
 // configuration
 const
-  version = '1.0.8',
+  version = '1.0.9',
   CACHE = version + '::PWAsite',
   installFilesEssential = [
     '/',
@@ -18,7 +18,7 @@ const
     '/img/so-youtube.png',
     '/img/so-weibo.png',
     '/img/so-translate.png',
-    '/img/so-pic.png',
+    '/img/so-xiachufang.png',
     '/img/so-taobao.png',
     '/img/so-handian.png',
     '/img/so-google.png',
