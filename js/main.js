@@ -34,6 +34,7 @@ $box.on('click', function() {
     $('.logo img').removeClass('active')
     $('#' + logo).addClass('active')
     $('#search_input').attr('data-to', prefix)
+    $('#logo').attr('href', prefix)
 
     var current = {
       logo: logo,
@@ -75,6 +76,7 @@ $(function() {
     $('.logo img').removeClass('active')
     $('#' + logo).addClass('active')
     $('#search_input').attr('data-to', prefix)
+    $('#logo').attr('href', prefix)
   }
 
   autofocus() // focus on input
