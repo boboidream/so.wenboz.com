@@ -46,6 +46,6 @@
   ---
 
 ❤️ 感谢 [Github](https://github.com) 提供代码托管！  
-❤️ 感谢 [Cloudflare](https://www.cloudflare.com) 提供 CDN 加速！ 
-❤️ 感谢 [SM.MS](https://sm.ms/) 提供图床！
-❤️ 感谢 [jsproxy](https://github.com/EtherDream/jsproxy) ！
+❤️ 感谢 [Cloudflare](https://www.cloudflare.com) 提供 CDN 加速！  
+❤️ 感谢 [SM.MS](https://sm.ms/) 提供图床！  
+❤️ 感谢 [jsproxy](https://github.com/EtherDream/jsproxy)！  
