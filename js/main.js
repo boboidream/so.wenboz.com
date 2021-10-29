@@ -81,7 +81,7 @@ $(function() {
 })
 
 // 隐秘模式==========================================
-var proxy_url = ['https://g.wenboz.com:8443/-----', 'https://zjcqoo.github.io/-----', 'https://gamedun.github.io/-----']
+var proxy_url = ['https://jsproxy.cyou/-----', 'https://linkouter.tk/-----', 'https://gamedun.github.io/-----']
 
 // 网址可用性测试实例
 var net = new Net()

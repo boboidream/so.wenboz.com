@@ -7,6 +7,10 @@
 ![preview.png](https://i.loli.net/2018/11/05/5bdfa9587bdc1.jpg)
 
 ## 更新说明
+* 20211029
+  ```
+  [*] 调整 jsproxy 代理。感谢 https://linkouter.tk/，https://jsproxy.cyou/
+  ```
 * 20200204
   ```
   [*] 调整「谷歌图片」为「下厨房」
