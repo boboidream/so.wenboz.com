@@ -83,8 +83,8 @@ $(function() {
 })
 
 // 隐秘模式==========================================
-var proxy_url = ['https://jsproxy.cyou/-----', 'https://linkouter.tk/-----',
-'https://gamedun.github.io/-----', 'https://g.hello2019.workers.dev/-----']
+var proxy_url = ['https://g.hello2019.workers.dev/-----', 'https://jsproxy.cyou/-----',
+'https://linkouter.tk/-----', 'https://gamedun.github.io/-----']
 
 // 网址可用性测试实例
 var net = new Net()
@@ -267,6 +267,7 @@ var setMode = function() {
       monkey.open()
     }).catch(function(e) {
       monkey.close()
+      setProxy(proxy_url[0])
       throw new Error(e)
     })
   })
