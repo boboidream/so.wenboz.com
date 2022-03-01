@@ -1,6 +1,6 @@
 // configuration
 const
-  version = '1.1.5',
+  version = '1.2.0',
   CACHE = version + '::PWAsite',
   installFilesEssential = [
     '/',
