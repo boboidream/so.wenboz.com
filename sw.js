@@ -1,6 +1,6 @@
 // configuration
 const
-  version = '1.2.3',
+  version = '1.2.6',
   CACHE = version + '::PWAsite',
   installFilesEssential = [
     '/',
@@ -19,17 +19,16 @@ const
     '/img/so-weibo.png',
     '/img/so-translate.png',
     '/img/so-xiachufang.png',
-    '/img/so-taobao.png',
+    '/img/so-alipansou.png',
     '/img/so-handian.png',
     '/img/so-google.png',
     '/img/so-douban.png',
-    '/img/so-dogedoge.png',
     '/img/so-bing.png',
     '/img/so-baidu.png',
     '/img/logo-google.png',
-    '/img/logo-dogedoge.png',
     '/img/logo-bing.png',
     '/img/logo-baidu.png',
+    '/img/logo-sougou.png',
   ];
 
 // install static assets
